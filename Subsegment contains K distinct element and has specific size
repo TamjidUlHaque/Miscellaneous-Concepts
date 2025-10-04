@@ -1,0 +1,76 @@
+/*Intuition :-
+    Question :- Given array er koto gula subsegment ache jekhane number of distinct 
+    element hoise k , ar oi subsegment er size ---> l <= | subsegment | <= r ???
+
+    Answer :- To solve this question , amader ekta map lagbe jeita kuno ekta element
+    er last occuring index identify korte help korbe . Ekta pair of set lagbe jar vitore
+    kuno ekta element er last occurance store kore rakha jabe . Oi set er size hobe ekhon
+    o porjonto input newa element gular moddhe distinct element er count . 
+
+    ll distinctCount = len(pairSet) ; 
+
+    1) Jodi distinctCount < k hoy tahole amader aro element lagbe , ekhono operation 
+    korar jonno proyojoniyo element nei . Tai continue korte thakbo .
+
+    2) Jodi distinctCount == k hoy tahole high value holo current index , high = i+1 ,
+    low value holo er set er firstValue ja include kortei hobe distinct k ta pete hole.
+    low = (i+1)-distinct.begin().F ; Ekta testcase dekhi :-
+
+    7 3 2 4
+    1 2 1 2 3 2 1 
+
+    Er jonno i == 4 e eshe len(distinct)==3 hobe , tokhon set.begin() er value {2,1} ;
+    Tarmane nunnotomo 2 index ke include kortei hobe . 
+    high = i + 1 = 4 + 1 = 5 . low = (i+1)-distinct.begin().F = 5 - 2 = 3 . Tarmane amader
+    currentIndex er jonno 3 theke 5 size er segment e 3 ta kore distinct element ache .
+
+    3) Jodi distinctCount == k+1 hoy tahole , 
+            low = (i+1) - next(distinct.begin()).F ;
+            high = (i+1) - distinct.begin().F - 1  = i - distinct.begin().F ;
+    Orthat low er value holo Thik jei element ta ke baad dile k+1 er len k hoye jabe oi 
+    index theke current index porjonto . Low er value holo nunnotomo jei index ke include
+    korle len(distinct) == k hobe .
+
+    4) Jodi distinctCount > k+1 hoy tahole set er beginning element ta delete kore dibo.
+    Oita ar amader kaaj e ashbe na , amader window ekhon shamner dike move korbe .
+
+    Shobar seshe high = min(high,r) , low = max(low,l) dara given costrains er sathe 
+    intersection newa hocche . Erpore answer er intersection er size add kora hocche .
+
+    Size = high - low + 1 ; Answer += Size ;
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n , k , l , r ; cin >> n >> k >> l >> r ; ll ans = 0LL ;
+    vll vec(n) ; map<ll,ll> mp ; set<pair<ll,ll>> distinct ;
+
+    tamjid(n){
+        cin >> vec[i] ; ll temp = vec[i] ;
+        if(mp.find(temp)!=mp.end()){
+            distinct.erase({mp[temp],temp}) ;
+        }
+        mp[temp] = i ; 
+        distinct.insert({mp[temp],temp}) ;
+        if(len(distinct)>k+1){
+            distinct.erase(distinct.begin()) ;
+        }
+        if(len(distinct)<k){
+            continue ;
+        }
+        ll low , high ; 
+        if(len(distinct)==k){
+            low = (i+1)-distinct.begin()->F ;
+            high = i+1 ;
+        }else{
+            low = (i+1) - next(distinct.begin())->F ;
+            high = (i+1) - distinct.begin()->F - 1 ; 
+        }
+        low = max(low,l) ;
+        high = min(high,r) ;
+        if(low<=high) ans += high-low+1 ;
+    }
+
+    cout << ans << endl ;
+
+}
