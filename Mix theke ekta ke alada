@@ -1,0 +1,35 @@
+/*Intuition :-
+
+    Ei problem tar mul statement chilo je ekta array teh duita vinno dhorner
+    element mix hoye ache . Kuno ek type er shob gula element ke ek jaygay ene
+    ekta segment banaite hobe . Sorbonimno koto gula operation er maddhome eita
+    kora shomvob . Ei problem er answer hoilo duita element er moddhe jeita ke
+    shobcheye kom move diye majkhane anajabe oitay hobe answer .
+    Ekhane posn name ekta variable declare kora hoise jar kaaj holo first position
+    kuthay ta thik kora . erpore first element ke nijer jaygay ene second element
+    er position thik kora . Eivabe egiye jawa .
+
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; string s ; cin >> s ; vll a , b ; 
+    for(int i = 0 ; i < n ; i++){
+        if(s[i]=='a') a.pb(i) ;
+        else b.pb(i) ;
+    }
+    if(n<4) cout << 0 << endl ;
+    else if(len(a)<2 or len(b)<2) cout << 0 << endl ;
+    else{
+        ll mid = len(a)/2 ; ll value = a[mid] ; 
+        ll posn = value-mid ; ll forA = 0 , forB = 0 ;
+        for(auto val:a){
+            forA += abs(val - posn) ; posn++ ; 
+        }
+        ll pin = len(b)/2 ; ll val = b[pin] ; ll idx = val-pin ;
+        for(auto val:b){
+            forB += abs(val - idx) ; idx++ ; 
+        }
+        cout << min(forA,forB) << endl ;
+    }
+}
