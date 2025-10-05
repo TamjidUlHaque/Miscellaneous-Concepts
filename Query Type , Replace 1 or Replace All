@@ -1,0 +1,38 @@
+/*Intuition :-
+    Proshner moddhe ekta array dewa ache n size er . Er moddhe q songkhok query
+    dewa ache . Query holo duita different type er . 
+
+    1) First type er query holo i tomo index e thaka value ke x dara replace 
+    kore dite hobe .
+
+    2) Second type er query holo shobgulo index er value ke x dara replace kore
+    dite hobe . 
+
+    Ekhane problem ta solve korar jonne amra ekta global variable use kortechi ja
+    variable of pair of long long , long long . Ja sorbosesh je operation e array
+    er shob value change hoise tar index store kore + value ta store kore .
+
+    Baki ta code dekhe bujha jacche ki hocche .
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n , query ; cin >> n >> query ; ll sum = 0LL ; 
+    vector<pair<ll,ll>> vec ; pair<ll,ll> global = {0,-1} ;
+    for(int i = 0 ; i < n ; i++){
+        ll a ; cin >> a ; vec.pb({a,0}) ; sum += a ;
+    }
+    for(int i = 0 ; i < query ; i++){
+        ll j ; cin >> j ; 
+        if(j==1){
+            ll idx , x ; cin >> idx >> x ; --idx ;
+            if(global.S>vec[idx].S) sum = sum + x - global.F ;
+            else sum = sum + x - vec[idx].F ;
+            vec[idx].S = i+1 ; vec[idx].F = x ;
+        }else{
+            ll x ; cin >> x ; sum = x*n ;
+            global = {x,i+1} ;
+        }
+        cout << sum << endl ;
+    }
+}
