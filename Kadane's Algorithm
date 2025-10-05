@@ -1,0 +1,48 @@
+/*Intuition :-
+    Proshner moddhe bola hoise totalArraySum theke boro ba shoman kuno sub array
+    sum pawa jabe ki na . 
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ; ll maxSum = 0 ;
+    ll sum = Sum(vec) ; ll curSumFront = 0 , curSumBack = 0 ; 
+    tamjid(n-1){
+        curSumFront += vec[i] ; maxSum = max(maxSum,curSumFront) ;
+        if(curSumFront<0) curSumFront = 0 ;
+    }
+    for(int i = n-1 ; i > 0 ; i--){
+        curSumBack += vec[i] ; maxSum = max(maxSum,curSumBack) ;
+        if(curSumBack<0) curSumBack = 0 ;
+    }
+
+    if(maxSum>=sum) no ;
+    else yes ;
+
+}  
+
+_________________________________________________________________NEW PROBLEM__________________________________________________________________
+
+/*Intuition :-
+    Proshner moddhe bola hoise je adjacent element gular jodi parity 
+    same na hoy tahole ei rokom subArray er jonno highest subArraySum
+    koto houwa shomovob .
+*/
+
+
+void giveMeMyGloryBack() {
+    
+    int n ; cin >> n ; vi vec(n) ; tamjid(n) cin >> vec[i] ;
+    int maxSum = vec[0] ; int currSum = vec[0] ;
+    for(int i = 1 ; i < n ; i++){
+        if(currSum<0) currSum = 0 ;
+        if(abs(vec[i])%2 != abs(vec[i-1])%2){
+            currSum += vec[i] ;
+        }else{
+            currSum = vec[i] ;
+        }
+        maxSum = max(maxSum,currSum) ;
+    }
+    cout << maxSum << endl ;
+
+}
