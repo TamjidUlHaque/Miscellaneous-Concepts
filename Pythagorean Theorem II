@@ -1,0 +1,25 @@
+#include<iostream>
+
+bool otivuj[100000001] ;
+
+int main(){
+    int n ;
+    scanf("%d",&n);
+    int count = 0 ;
+        for(int i = 1 ; i <= n;++i){
+                otivuj[i*i] = true ;
+            }
+
+    for(int vumi = 1 ; vumi <= n ;++vumi){
+        for(int lombo = vumi ; lombo <= n ;++lombo){
+            int LHS = vumi*vumi + lombo*lombo ;
+            if(LHS <= n*n && otivuj[LHS]) count++ ;
+        }
+    }
+
+    printf("%d",count);
+
+    return 0 ;
+}
+
+ 
