@@ -1,0 +1,21 @@
+/*Intuition :-
+  Ekhane proshner moddhe bola hoise je shob cheye boro contiguous distict element er segment ta
+  left side e kun jayga theke shuru hoise and right side e kun jaygay giye sesh hoise .
+
+  Jodi ei rokom kuno contiguous segment na thake tobe 0 print korte bola hoise . 
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll vec(n) ; map<ll,ll> freq ;
+    tamjid(n){ cin >> vec[i] ; freq[vec[i]]++ ; }
+    ll lptr , rptr ; ll cur = 0 , mx = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        if(freq[vec[i]]==1) ++cur ;
+        else cur = 0 ;
+        if(cur>mx){
+            mx = cur ; rptr = i+1 ; lptr = rptr-cur+1 ;
+        }
+    }
+    if(mx) cout << lptr << gap << rptr << endl ;
+    else cout << 0 << endl ;
+}
