@@ -1,0 +1,40 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je amake n songkhok cave er moddhe dhuke
+    ekbare shokol monster ke mere ashte hobe . Ami amar iccha moto cave e age 
+    probesh korte pari kintu cave er monster er sathe serially fight korte hobe.
+    Ekhon ami sorbonimno koto health niye fight shuru korle successfully shob gula
+    monster ke mere felte parbo .
+
+    Answer approach : Ekhane kheyal korle dekha jay je kuno ekta cave er shob gula
+    monster ke jodi amra mere ashte chai tahole amader oi monster ke marar jonno
+    health proyojon = a[i]-i theke 1 beshi . Karon amar health ar monster er health
+    shoman hoye gele ami more jabo . Er theke 1 beshi lagbe e . Tai ami proti ta cave
+    er jonno shorbonimno health required + oi cave e thaka monster er songkha store
+    kore rakhtesi . Karon required health h niye cave e dhukle h + noOfMonstersInCave
+    health niye ber hobo . Ekhon optimal way holo kom health requirement wala cave e
+    age probesh kora .
+
+    Last er loop er moddhe iteration er maddhome amra answer value select kortesi .
+    Prothom shobcheye kom health niye first cave e dhuklam and shob gula ke mere
+    health increase kore nilam . Jodi increasedHealth > NextCaveMinHealthReq hoy
+    tobe answer e change korar dorkar nai . Nahole answer update hoye 
+    NextCaveMinHealthReq hoye jabe . Eivabe last e answer print kore dibo .
+*/
+
+void giveMeMyGloryBack() {
+    ll noOfCaves ; cin >> noOfCaves ; vector<pair<ll,ll>> vec ; 
+    while(noOfCaves--){
+        ll noOfMonsters ; cin >> noOfMonsters ; ll maxHealthRequired = aura ;
+        for(int i = 0 ; i < noOfMonsters ; i++){
+            ll monstersHealth ; cin >> monstersHealth ; 
+            maxHealthRequired = max(maxHealthRequired,monstersHealth-i) ;
+        }
+        vec.pb({1+maxHealthRequired,noOfMonsters}) ;
+    }
+    nsort(vec) ; ll minHealthReq = vec[0].F ; ll healthIncrease = vec[0].S ;
+    for(int i = 1 ; i < len(vec) ; i++){
+        minHealthReq = max(minHealthReq,vec[i].F-healthIncrease) ;
+        healthIncrease += vec[i].S ;
+    }
+    cout << minHealthReq << endl ;
+}
