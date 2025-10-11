@@ -1,0 +1,52 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je , amake ekta shomokoni trivuj er kuno ekta
+    bahur doirgho dewa thakbe . Eita otivuj o hoite pare abar lombo ba vumi o hoite
+    pare . Amake bolte hobe baki duita bahur doirgho koto . Othoba bolte hobe emon
+    shomokuni trivuj gothon kora shomvob nah .
+
+    First, suppose n is the shortest side of the triangle, m, k are other two sides. 
+    According to Pythagorean Theorem, we know n2+m2=k2
+
+    just do a change k2-m2=n2
+
+    futherly (k+m)(k-m)=n2
+
+    as we know, n2×1=n2 so we can suppose that k+m=n2 , k-m=1 .
+
+    easily, we get m = k - 1 , 2k-1 = n^2 . Therefore , k = (n^2+1)/2 , m = k - 1 = (n^2-1)/2
+
+    because the side is a integer, so this solution can only be used when n is a odd.
+
+    So how to deal with even? we find that,if (k-m) is odd, the solution is suitable for odd. 
+    On the other hand, we guess that if(k-m) is even, the solution is suitable for even.
+
+    just as this, (1/2*n^2)×2=n2 so we can suppose that k + m = (1/2)*n2 , k-m = 2 .
+
+    so, we get,  m = k - 2 , k + k - 2 + m = (1/2)*n2 ---> k = ((1/4)*n^2) + 1 , m = ((1/4)*n^2) - 1
+
+    this is an O(1) algorithm.
+
+    Ei shutro gula use koira ei problem ta solve kora jaibo . Er pashapashi pythagorean
+    theorem er jekuno problem e ei formula gula use kora jay .
+
+    Ei formula tar kaaj korar karon hoilo 
+    if n > 2 , There will be always an n^2 + m^2 = k^2 exists.
+
+    Ar ei formula ta teh shob shomoy amra given n ke shobcheye chuto side dhore niyechi .
+
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ;
+    if(n<3){ // {3,4,5} holo shobar prothom pythagorean triplets.
+        cout << -1 << endl ; return;
+    }
+
+    if(isOdd(n)){
+        ll k = (n*n+1)/2 ; ll m = (n*n-1)/2 ;
+        cout << k << gap << m << endl ;
+    }else{
+        ll k = (n*n)/4+1 ; ll m = (n*n)/4-1 ;
+        cout << k << gap << m << endl ;
+    }
+}
