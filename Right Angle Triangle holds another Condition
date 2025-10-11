@@ -1,0 +1,32 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je , 1 theke n porjonto emon koto gula 
+    right angle triangle ache jara 
+
+    i) 1 <= a <= b <= c <= n constrains mene chole . 
+    ii) c^2 = a^2 + b^2 and c = a^2-b both are true .
+
+    Answer approach, 
+        c^2 = a^2 + b^2 ................(i) 
+        c = a^2-b ................(ii)
+
+        a^4 - 2(a^2)b + b^2 = a^2 + b^2 [Put the value of eqn ii into eqn i]
+        a^4 - a^2 = 2(a^2)b [Divide both side with a^2]
+        a^2 - 1 = 2b . 
+
+        That means {{a = sqrt(2b+1)}} . {{c = 2b+1-b = b + 1}} . 
+        {{b = c-1}} --> {{a = sqrt(2(c-1)+1)}} --> {{a = sqrt(2c-1)}}
+        Tarmane c obossoi a theke boro hobe . Karon a er value <= b .
+
+        EKhane c odd ba even jai houwk na keno 2*c hobe even , 2c-1 hobe odd .
+
+        Tarmane a er value 100% odd hobe . Ekhon a er value 1 houwa shomvob na
+        karon a == 1 hobe c == 1 hobe and b == 0 hobe . Orthat emon trivuj shomvob na.
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; ll cnt = 0 ; ll a = 3 ;
+    while(((a*a+1)+2-1)/2<=n){
+        cnt++ ; a += 2 ;
+    }
+    cout << cnt << endl ;
+}
