@@ -1,0 +1,30 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je n theke immidiate boro je super lucky 
+    number ache ta print korte hobe . 
+
+    Ekhane next_permutation use kore shob gula lucky number generate kora hoise .
+    A very unique idea .
+*/
+
+vll luckyNums ;
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; auto it = lower_bound(all(luckyNums),n) ;
+    cout << *it << endl ;
+}
+
+int main(){
+    Bismillah() ;
+
+    vector<string> vec = {"47" , "4477" , "444777", "44447777" , "4444477777"} ;
+    
+    for(auto val:vec){
+        do{
+            luckyNums.pb(stoll(val)) ;
+        }while(next_permutation(all(val)));
+    }
+
+    /*testloop*/ giveMeMyGloryBack() ;
+
+    Alhamdulillah ;
+}
