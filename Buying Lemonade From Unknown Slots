@@ -1,0 +1,26 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je n songkhok slot ache jar moddhe i tomo
+    slot e a[i] ta kore colddrinks er can rakha ache . Ekhon amra jani na thik 
+    kunta te koto gula kore can rakha ache . Ekhon proshno holo shorbonimno koto
+    gula button press kore amra k songkhok can pete pari . 
+
+    Ekhane shobcheye basic observation holo amra kuno ekta slot theke can collect
+    na kore ek serially shob gula theke ekta ekta kore can collect korte thakbo .
+    Tahole shobcheye kom jeita teh ache jodi oita teh x ta can thake tobe amader
+    prothom wrong press korar age (x * n) ta can collect kora complete hoye jabe .
+    Second wrong button press korar age (y-x) * (n-1) ta can collect kora hoye jabe
+    jodi second smallest number of cans y hoy .
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n , k ; cin >> n >> k ; vll vec(n,0) ; ll used = 0 ;
+    tamjid(n) cin >> vec[i] ; nsort(vec) ; ll cans = 0LL ;
+    for(int i = 0 ; i < n ; i++){
+        cans += (vec[i]-used) * (n-i) ;
+        if(cans>=k){
+            cout << k+i << endl ; return ;
+        }
+        used = vec[i] ; 
+    }
+}
