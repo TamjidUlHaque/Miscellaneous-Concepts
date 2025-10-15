@@ -1,0 +1,30 @@
+import java.util.* ;
+ 
+public class TamjidisLearningJava{
+    public static Scanner sc = new Scanner(System.in) ;
+    /*Intuition :-
+        1 theke n porjonto k er divisor ache floor(n/k) ta . Ekhon, 
+        P(A u B u C u D) = P(A) + P(B) + P(C) + P(D) - P(A and B) - P(A and C) - P(A and D) - P(B and C) - P(B and D) - P(C and D) + 
+                           P(A and B and C) + P(A and B and D) + P(A and C and D) + P(B and C and D) - P(A and B and C and D) . 
+    */
+ 
+    public static void keepFaithInTheProcess() {
+        long left = sc.nextLong() ; long right = sc.nextLong() ;
+        long ans = right - left + 1 ; left-- ;
+        long single = (right/2 - left/2) + (right/3 - left/3) ;
+        single += (right/5 - left/5) + (right/7 - left/7) ;
+        long dauble = (right/6 - left/6) + (right/10 - left/10) + (right/14 - left/14) ;
+        dauble += (right/15 - left/15) + (right/21 - left/21) + (right/35 - left/35) ;
+        long triple = (right/30 - left/30) + (right/42 - left/42) ;
+        triple +=  (right/70 - left/70) + (right/105 - left/105) ;
+        long quadra = right/210 - left/210 ;
+        ans = ans - single + dauble - triple + quadra ;
+        System.out.println(ans);
+    }
+ 
+    public static void main(String[] args){
+        /*long testcase = 1 ;*/
+        int testcase = sc.nextInt() ;
+        while(testcase-- > 0) keepFaithInTheProcess() ;
+    }
+}
