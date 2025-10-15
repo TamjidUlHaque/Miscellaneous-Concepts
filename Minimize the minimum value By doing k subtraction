@@ -1,0 +1,49 @@
+/*Intuition :- 
+    Ekhane proshner moddhe bola hoise je , ekta n size er array er upore k ta operation
+    emon vabe korte hobe jeno maximum value of minimum element ta jeno minimize hoy .
+    1 ta operation er maddhome jekuno duita vinno element er moddhe absolute difference
+    ber kore oi difference ke array er moddhe input kora jay .
+
+    Observe korar bepar ta holo jodi k er value >= 3 hoy tahole prothom duita operation
+    e jekuno duita element ke niye eder moddhe operation korle array te notun duita value
+    x add hobe . Eder moddhe last operation ta korle array te ekta 0 pawa jabe ja shobcheye
+    optimal answer .
+
+    Jodi k==1 hoy tahole hoy array er min value ta answer nahole array er shobgula element er
+    moddhe minDifference ta answer .
+
+    Jodi k==2 hoy tahole Amader ke shob gula pair er jonno jei difference ta hoy ta calculate 
+    korte hobe . Pore lower_bound use korar maddhome amra oi element er equal othoba boro
+    element ke khuje oita ar er ager tar moddhe diff calculate korle minval peye jabo .
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    nsort(vec) ;
+    if(k==1){
+        ll minval = vec.front() ;
+        for(int i = 1 ; i < n ; i++) minval = min(minval,abs(vec[i]-vec[i-1])) ;
+        cout << minval << endl ;
+    }else if(k==2){
+        ll minval = vec.front() ; 
+        for(int i = 0 ; i < n-1 ; i++){
+            for(int j = i+1 ; j < n ; j++){
+                ll dif = (abs(vec[j]-vec[i])) ;
+                minval = min(minval*1LL,dif*1LL) ;
+                ll idx = lower_bound(all(vec),dif)-vec.begin() ;
+                if(idx==n){
+                    minval = min(minval,abs(dif-vec.back())) ;
+                }else if(idx==0){
+                    minval = min(minval,abs(dif-vec.front())) ;
+                }else{
+                    minval = min(minval,abs(dif-vec[idx])) ;
+                    minval = min(minval,abs(dif-vec[idx-1])) ;
+                }
+            }
+        }
+        cout << minval << endl ;
+    }else{
+        cout << 0 << endl ;
+    }
+}
