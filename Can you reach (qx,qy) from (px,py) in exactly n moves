@@ -1,0 +1,33 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je amake duita point dewa hobe . (px,py) and (qx,qy) .
+    Amake ekta n size er array dewa hobe jar moddhe value gula a[i] diye denote kora . Proti 
+    ta single move e amake exactly a[i] position move korte hobe . n songkhok operation seshe
+    (qx,qy) bindu te pouchate parbo ki na bolte hobe . 
+
+    Ekhane move gula ke ekta vector er moto jodi amra chinta kori tahole dekhte pabo je jodi
+    amader cover korte chawa distance > total summation of vector hoy tahole cover kora impossible.
+    Arekta jinish check korte hobe . Shob cheye boro jei move ta dibo oita dewar pore baki move gula
+    diye er vitorer kuno bindu jodi cover korte na pari tahole oi bindur jonno output no hobe.
+    Mane TotalSum - Maxval <= distance <= TotalSum .
+*/
+
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; ll px , py , qx , qy ; 
+    cin >> px >> py >> qx >> qy ; 
+    ll x = (px-qx) , y = (py-qy) ; ll distance = x*x + y*y ;
+    ll sum = 0 ; ll maxval = 0 ;
+    tamjid(n){
+        ll a ; cin >> a ; sum += a ; 
+        maxval = max(maxval,a) ;
+    }
+    if(sum*sum < distance){
+        no ; return ;
+    } 
+    sum -= maxval ; 
+    ll low = max(maxval - sum,0LL) ; 
+    if(low*low > distance){
+        no ; return ;
+    }
+    yes ;
+}
