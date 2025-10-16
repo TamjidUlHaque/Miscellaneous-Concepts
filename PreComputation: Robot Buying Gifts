@@ -1,0 +1,32 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je amader ke ekta n size er array dewa hobe
+    jekhane bola ache i tomo robot er kache koto tk ache . Erpore q songkhok query
+    dewa ache jekhane bola ache key tomo robot value songkhok taka diye ekta gift
+    kinte chay . Amader ke bolte hobe emon koto gula distinct robot ache jader 
+    kebol ekjon er kach theke tk hire kore eita nijer tk er sathe jukto kore ba 
+    jukto kora chara gift kinte parbe . Jodi nijer kache tk diyei gift kina jay
+    tobe 0 print kore dite hobe . Jodi kuno vabei kinte na pare tahole -1 print
+    korte hobe .
+
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    
+    map<ll,ll> freq ; tamjid(n) freq[vec[i]]++ ;
+
+    ll query ; cin >> query ;
+
+    while(query-->0){
+        ll robot , price ; cin >> robot >> price ; robot-- ;
+        if(vec[robot]==price){
+            cout << 0 << endl ; continue ;
+        }
+        freq[vec[robot]]-- ; ll ans = 0LL ;
+        ans += freq[price] ; ans += freq[price-vec[robot]] ;
+        if(ans==0) cout << -1 << endl ;
+        else cout << ans << endl ;
+        freq[vec[robot]]++ ;
+    }
+
+}
