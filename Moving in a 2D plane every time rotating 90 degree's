@@ -1,0 +1,41 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je amake ekta 2D plane er moddhe rakha hoise . 
+    Amake n songkhok move perform korte hobe . First move e left , right , up , down
+    shob direction e move kora jabe . Kintu porer move gular khetre restriction ache .
+    Jodi previous move up ba down hoye thake tahole currentMove must be left ba right
+    hote hobe . Karon proshne bola hoise je after every move the player has to turn 
+    90 degree which means horizontal to vertical or vertical to horizontal .
+
+    Answer approach , Jodi n er value even hoy tahole amader left-right move hobe n/2 ta.
+    Up-down move hobe n/2 ta . Ar n/2 move e n/2 + 1 position cover kora possible . 
+
+    For example n == 6 hole , n/2 == 3 . Ekhetre 
+
+    i) 3 ta move e up dite parbe .                  | i) 3 ta move e right e dite parbe .
+    ii) 2 ta move up and 1 ta down dite parbe .     | ii) 2 ta move right e 1 ta left e parbe.
+    iii) 1 ta move up and 2 ta down dite parbe .    | iii) 1 ta move right e , 2 ta left e parbe.
+    iv) 3 ta e down dite parbe .                    | iv) 3 ta move e left e dite parbe .
+
+    Proti ta point e ekhane independent co-ordinate . Tahole total number of possibility
+    ( n/2 + 1 ) * ( n/2 + 1 ) ta distinct co-ordinate .
+
+    Jodi n er value odd hoy tahole extra move ta jodi 
+
+    left right e add hoy (n/2+1)*(n/2+1+1) ;
+    up down e add hoy (n/2+1+1)*(n/2+1) ;
+
+    Tahole total number of possible co-ordinate = (n/2+1+1)*(n/2+1) + (n/2+1)*(n/2+1+1)
+
+    Ar ekhane kokhonoi overlapping possible na karon Jodi up down move first e dei tahole
+    updown (x,y) er moddhe y er value ta odd hobe , x er value even hobe . Jodi left right age
+    dei tahole (x,y) er moddhe x er value ta odd hobe , y er value ta even hobe .
+*/
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ;
+    if(isOdd(n)){
+        cout << (n/2+1+1)*(n/2+1) + (n/2+1)*(n/2+1+1) << endl ;
+    }else{
+        cout << ((n/2+1) * (n/2+1)) << endl ;
+    }
+}
