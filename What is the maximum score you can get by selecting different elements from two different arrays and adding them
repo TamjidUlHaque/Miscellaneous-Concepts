@@ -1,0 +1,15 @@
+void giveMeMyGloryBack() { 
+    ll n , m ; cin >> n >> m ; vll vec(n) , arr(n) ; ll ans = 0 ;
+    tamjid(n) cin >> vec[i] ; tamjid(n) cin >> arr[i] ;
+    map<ll,ll> freq1,freq2 ;
+    tamjid(n) freq1[vec[i]]++ ; tamjid(n) freq2[arr[i]]++ ;
+    for(auto val:freq1){
+        ll x = val.S ; ll y = m - freq2[val.F] ;
+        ans += (min(x,y) * val.F) ;
+    }
+    for(auto val:freq2){
+        ll x = val.S ; ll y = n - freq1[val.F] ;
+        ans += (min(x,y) * val.F) ;
+    }
+    cout << ans << endl ;
+}
