@@ -1,0 +1,37 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je amader ke ekta array dewa hobe jar size == n . 
+    Oi array er element gula theke duita subsequence toiri korte hobe . Dui ta
+    subsequence er moddhe jei value gula geche er vitti te eder penalty koto bolte
+    hobe . Penalty 1 barbe jodi for any index i , arr[i] < arr[i+1] hoy . Jodi 
+    arr[i] >= arr[i+1] hoy taile kuno problem nai . 
+
+    Ei problem ta solve korar jonne amra kebol matro last index er track rakhlei 
+    choltese . Amra muloto dhore nicchi je vector s er last element ta vector t
+    er last element er cheye chuto . Ekhane amra jokhon chuto value dhukate chai
+    tokhon age arr(s) e check kori . Pore arr(t) teh check kori . Jodi kuno value
+    duita theke e boro hoy tokhon penalty obossoi barbe . Tokhon oi value ta arr(s)
+    er last element hishebe ache jeita amader penalty er karon hoise . Proti iteration
+    seshe check hocche je arr(s) er last element ta jeno arr(t) er last element er 
+    cheye chuto thake . Chuto na thakle swap kore chuto baniye newa hocche .
+    Swapping er case tar mul functionality holo jodi eksathe onek gula increasing
+    element ashte thake tader ke tackle kora .
+
+    1 2 3 4 5 
+
+    Array s --> {Infinity} ,     {1}    , {1} , {1,3} , {1 , 2 , 4} , {1 , 2 , 3 , 5}
+    Array t --> {Infinity} , {Infinity} , {2} ,  { 2 }  ,   { 3 }     ,      { 5 }
+*/
+
+void giveMeMyGloryBack() { 
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ; ll penalty = 0 ; 
+    ll smallestLastValue = infinity ; ll largestLastValue = infinity ;
+    for(int i = 0 ; i < n ; i++){
+        if(smallestLastValue>largestLastValue) swap(smallestLastValue,largestLastValue) ;
+        if(vec[i]<=smallestLastValue) smallestLastValue = vec[i] ;
+        else if(vec[i]<=largestLastValue) largestLastValue = vec[i] ;
+        else{
+            smallestLastValue = vec[i] ; penalty++ ;
+        }
+    }
+    cout << penalty << endl ;
+}
