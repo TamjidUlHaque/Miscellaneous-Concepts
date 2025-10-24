@@ -1,0 +1,26 @@
+/*Intuition :-  
+                Proshner moddhe bola hoise je amader ke shobcheye boro size er alternating subsequence nite
+                hobe + kheyal rakhte hobe jeno oi size er shob alternating subsequence er moddhe amader choose kora 
+                subsequence er value ta e jeno hoy maximum .     
+*/
+
+void giveMeMyGloryBack() { 
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ; ll ans = 0 ;
+    vll storeSegment ; ll temp = vec.front() ; bool check = (temp > 0) ;
+    tamjid(n){
+        if(check){
+            if(vec[i]<0){
+                storeSegment.pb(temp) ; temp = vec[i] ; check = false ;
+            } 
+        }else{
+            if(vec[i]>0){
+                storeSegment.pb(temp) ; temp = vec[i] ; check = true ;
+            }
+        }
+        temp = max(temp,vec[i]) ;
+    }
+    if(storeSegment.empty()) storeSegment.pb(temp) ;
+    else if(storeSegment.back()*temp < 0 ) storeSegment.pb(temp) ;
+    tamjid(len(storeSegment)) ans += storeSegment[i] ;
+    cout << ans << endl ;
+}
