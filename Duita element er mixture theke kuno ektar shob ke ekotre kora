@@ -33,3 +33,27 @@ void giveMeMyGloryBack() {
         cout << min(forA,forB) << endl ;
     }
 }
+
+_____________________________________________________ 1 5 2 0 E ____________________________________________________________________
+
+Intuition:- Ekhane bola hoise ekta string er (.) gula holo empty character and (*) gula holo sheep . Minimum
+koto gula move e shobgula sheep ke ekjaygay ana jabe .
+
+
+void giveMeMyGloryBack() { 
+    ll n ; cin >> n ; string s ; cin >> s ; vll vec ;
+    for(int i = 0 ; i < n ; i++){
+        if(s[i]=='*') vec.pb(i+1) ;
+    }
+    if(len(vec)<2) cout << 0 << endl ;
+    else{
+        ll mid = len(vec)/2 ; ll val = vec[mid] ;
+        ll startingPosition = val-mid ; ll numberOfMoves = 0 ;
+        for(auto val:vec){
+            numberOfMoves += abs(startingPosition-val) ; startingPosition++ ;
+        }
+        cout << numberOfMoves << endl ;
+    }
+}
+
+
